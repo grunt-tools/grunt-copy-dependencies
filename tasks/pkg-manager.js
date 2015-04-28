@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('package_manager', 'Package Manager for dependencies', function() {
+  grunt.registerMultiTask('pkgManager', 'Package Manager for dependencies', function() {
 
     var options = this.options({
           manager: 'bower'
