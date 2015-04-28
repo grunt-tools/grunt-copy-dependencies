@@ -1,7 +1,7 @@
 {
   "name": "grunt-package-manager",
   "description": "Package Manager for dependencies",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/jstools/grunt-package-manager",
   "author": {
     "name": "Jesús Germade",
@@ -40,6 +40,6 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "package-manager": "0.0.5"
+    "package-manager": "0.0.8"
   }
 }
