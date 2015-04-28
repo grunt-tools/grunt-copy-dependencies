@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('pkgManager', 'Package Manager for dependencies', function() {
+  grunt.registerMultiTask('copyDependencies', 'Dependencies copier (bower or npm)', function() {
 
 
     var extend = require('util')._extend,
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
     // console.log('akajlahgakag', src, this.data.dest, options, manager);
 
     src.forEach(function (iSrc) {
-      manager.find({ cwd: options.cwd, src: src[0] || 'dependencies', append: true });
+      manager.find({ cwd: options.cwd, src: iSrc || 'dependencies', append: true });
     });
 
     manager.copy(this.data.dest);
