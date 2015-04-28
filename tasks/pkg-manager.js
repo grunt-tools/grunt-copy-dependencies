@@ -15,31 +15,36 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('pkgManager', 'Package Manager for dependencies', function() {
 
-    var options = this.options({
+
+    var extend = require('util')._extend,
+        options = extend(this.options(), {
           manager: 'bower'
         }),
         path = require('path'),
-        manager = require('package-manager'),
+        manager = require('package-manager')(options.manager),
         cwd = process.cwd(),
         src = [''];
 
-    if( !options.dest || path.join( cwd, options.dest ) === cwd ) {
-      throw 'invalid dest dir: ' + options.dest;
+
+    if( !this.data.dest || path.join( cwd, this.data.dest ) === cwd ) {
+      throw 'invalid dest dir: ' + this.data.dest;
     }
 
-    if( typeof options.src === 'string' ) {
-      src = [options.src];
+    if( typeof this.data.src === 'string' ) {
+      src = [this.data.src];
     } else if( options.src instanceof Array ) {
-      src = options.src;
-    } else if( options.src ) {
+      src = this.data.src;
+    } else if( this.data.src ) {
       throw 'src should be a string or array of strings';
     }
 
+    // console.log('akajlahgakag', src, this.data.dest, options, manager);
+
     src.forEach(function (iSrc) {
-      manager.find({ cwd: options.cwd, src: iSrc || 'dependencis', append: true });
+      manager.find({ cwd: options.cwd, src: src[0] || 'dependencies', append: true });
     });
 
-    manager.copy(dest);
+    manager.copy(this.data.dest);
   });
 
 };
