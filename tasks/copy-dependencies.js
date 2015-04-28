@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 
     if( typeof this.data.src === 'string' ) {
       src = [this.data.src];
-    } else if( options.src instanceof Array ) {
+    } else if( this.data.src instanceof Array ) {
       src = this.data.src;
     } else if( this.data.src ) {
       throw 'src should be a string or array of strings';
