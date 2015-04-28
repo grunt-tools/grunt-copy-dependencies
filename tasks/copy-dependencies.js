@@ -38,8 +38,6 @@ module.exports = function(grunt) {
       throw 'src should be a string or array of strings';
     }
 
-    // console.log('akajlahgakag', src, this.data.dest, options, manager);
-
     src.forEach(function (iSrc) {
       manager.find({ cwd: options.cwd, src: iSrc || 'dependencies', append: true });
     });
