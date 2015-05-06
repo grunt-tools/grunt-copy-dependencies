@@ -39,12 +39,14 @@ module.exports = function(grunt) {
       throw 'src should be a string or array of strings';
     }
 
+    src = src.map(function (value) { return grunt.config.process(value); });
+
     try {
       src.forEach(function (iSrc) {
         manager.find({ cwd: options.cwd, src: iSrc || 'dependencies', append: true });
       });
 
-      manager.copy(this.data.dest);
+      manager.copy(grunt.config.process(this.data.dest));
     } catch (err) {
       grunt.fail.fatal(err);
     }

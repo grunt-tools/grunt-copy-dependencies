@@ -12,6 +12,11 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+
+    dir: {
+      tmp: '.tmp'
+    },
+
     jshint: {
       all: [
         'Gruntfile.js',
@@ -31,7 +36,7 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     copyDependencies: {
       default_options: {
-        dest: '.tmp',
+        dest: '<%= dir.tmp %>',
         options: {
           manager: 'npm'
         }
