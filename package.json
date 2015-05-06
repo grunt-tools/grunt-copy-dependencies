@@ -1,7 +1,7 @@
 {
   "name": "grunt-copy-dependencies",
   "description": "Dependencies copier (bower or npm)",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "homepage": "https://github.com/jstools/grunt-copy-dependencies",
   "author": {
     "name": "Jesús Germade",
