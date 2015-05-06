@@ -43,10 +43,10 @@ module.exports = function(grunt) {
 
     try {
       src.forEach(function (iSrc) {
-        manager.find({ cwd: options.cwd, src: iSrc || 'dependencies', append: true });
+        manager.find( extend(options, { src: iSrc || 'dependencies', append: true }) );
       });
 
-      manager.copy(grunt.config.process(this.data.dest));
+      manager.copy( grunt.config.process(this.data.dest), options );
     } catch (err) {
       grunt.fail.fatal(err);
     }

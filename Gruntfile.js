@@ -40,6 +40,13 @@ module.exports = function(grunt) {
         options: {
           manager: 'npm'
         }
+      },
+      custom_options: {
+        dest: '<%= dir.tmp %>',
+        options: {
+          expand: true,
+          manager: 'npm'
+        }
       }
     },
 

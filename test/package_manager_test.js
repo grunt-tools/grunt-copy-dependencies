@@ -33,5 +33,12 @@ exports.package_manager = {
     test.equal(grunt.file.isFile('.tmp/package-manager.js'), true, 'should describe what the default behavior is.');
 
     test.done();
+  },
+  custom_options: function(test) {
+    test.expect(1);
+
+    test.equal(grunt.file.isFile('.tmp/package-manager/package-manager.js'), true, 'should describe what the default behavior is.');
+
+    test.done();
   }
 };
