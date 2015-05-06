@@ -17,14 +17,15 @@ module.exports = function(grunt) {
 
 
     var extend = require('util')._extend,
-        options = extend(this.options(), {
+        options = extend({
           manager: 'bower'
-        }),
+        }, this.options()),
         path = require('path'),
         manager = require('package-manager')(options.manager),
         cwd = process.cwd(),
         src = [''];
 
+    console.log('dest', cwd, this.data.dest);
 
     if( !this.data.dest || path.join( cwd, this.data.dest ) === cwd ) {
       throw 'invalid dest dir: ' + this.data.dest;
@@ -38,11 +39,15 @@ module.exports = function(grunt) {
       throw 'src should be a string or array of strings';
     }
 
-    src.forEach(function (iSrc) {
-      manager.find({ cwd: options.cwd, src: iSrc || 'dependencies', append: true });
-    });
+    try {
+      src.forEach(function (iSrc) {
+        manager.find({ cwd: options.cwd, src: iSrc || 'dependencies', append: true });
+      });
 
-    manager.copy(this.data.dest);
+      manager.copy(this.data.dest);
+    } catch (err) {
+      grunt.fail.fatal(err);
+    }
   });
 
 };
